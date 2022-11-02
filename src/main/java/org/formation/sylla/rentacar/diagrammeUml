@@ -1,0 +1,42 @@
+@startuml
+
+class Agence {
+-nom: String  
+-address: String 
+
++creerVoiture()
++entrerUnClient(client: Client)
++donnerLaVoiture(Client client) 
+}
+
+class Client{
+-nom:String 
+-prenom: String
+-annéeDeNaissance: int
+
++louerUneVoiture(voiture: Voiture)
++demarrerVoiture()
++rendreVoiture(Voiture voiture): Voiture
+}
+
+class Voiture{
++demarrerLeMoteur() 
++ouvrirCapot(): Moteur
+}
+
+class Moteur {
+
++affichageNumCylindre: String
+}
+
+class Cylindre {
+-nombreDeCylindre: int
+}
+
+Agence -- " leClient 0--1" Client
+Agence o-- "0--1  laVoiture " Voiture
+Voiture o-- "1 leMoteur" Moteur
+Moteur *-- "2--12 lesCylindres" Cylindre
+Client -- " laVoiture 0--1" Voiture
+
+@enduml
