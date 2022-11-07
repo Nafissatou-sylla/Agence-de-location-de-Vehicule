@@ -20,23 +20,29 @@ class Client{
 }
 
 class Voiture{
+- marque: String
 +demarrerLeMoteur() 
 +ouvrirCapot(): Moteur
 }
 
 class Moteur {
+- niveau d'huile
 
-+affichageNumCylindre: String
++lancer()
+/* +affichageNumCylindre: String */
 }
 
 class Cylindre {
--nombreDeCylindre: int
+-numCylindre: int
+-etat: String
+
++lancer()
 }
 
-Agence -- " leClient 0--1" Client
-Agence o-- "0--1  laVoiture " Voiture
-Voiture o-- "1 leMoteur" Moteur
-Moteur *-- "2--12 lesCylindres" Cylindre
-Client -- " laVoiture 0--1" Voiture
+Agence  -- "1..1 leClient" Client
+Agence o-- "0..1  laVoiture " Voiture
+Voiture o-- "1..1 leMoteur" Moteur
+Moteur *-- "1..n lesCylindres" Cylindre
+Client -- " laVoiture 0..1" Voiture
 
 @enduml
