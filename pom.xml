@@ -3,4 +3,7 @@
   <groupId>org.formation.sylla.rentACar</groupId>
   <artifactId>rentacar</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  <java.version> 17 </java.version>
+  </properties>
 </project>

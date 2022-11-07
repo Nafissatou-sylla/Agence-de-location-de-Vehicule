@@ -1,5 +1,8 @@
 package org.formation.sylla.rentacar;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * @author finas
  * class agency to rent a car 
@@ -8,9 +11,8 @@ package org.formation.sylla.rentacar;
 public class Agency {
 private String name;
 private String address;
-private Client client;
-private Car car;
-
+private ArrayList<Client> clients;
+private ArrayList<Car> cars;
 
 
 /**
@@ -21,9 +23,13 @@ private Car car;
 
 public Agency(String name, String address) {
 	this.name = name;
-	this.address = address;
-	this.client = null;
-	this.car = new Car();
+	this.address = address; 
+	this.clients = null;
+	this.cars = new ArrayList<>();
+	
+	for (Client client : clients) {
+		client = null;
+	}
 }
 
 
@@ -32,7 +38,7 @@ public Agency(String name, String address) {
  * 
  * @param car agency's car
  */
-public Agency(Car car) { this.car = car; }
+public Agency(ArrayList<Car> cars) { this.cars = cars; }
 
 
 /**
@@ -56,14 +62,31 @@ public String getAddress() { return address; }
  * @return a car
  */
 
-public Car createCar() { return car; }
+public Car createCar() {
+	for (Car car : cars) {
+		if(car == null) {
+			cars.add(new Car());
+		}
+	}
+	return new Car(); 
+}
 
 
 /**
- * receive a new Client
+ * the Agency receive a new Client
  * @return the new client
  */
-public Client addAClient(Client client) { return client; }
+public void addAClient(Client aClient) {
+	for (Client client : clients) {
+		if(client == null) {
+			client = aClient;
+		}
+		else {
+			System.out.println("le client existe déja");
+		}
+	}
+}
+
 
 
 /**
@@ -73,10 +96,10 @@ public Client addAClient(Client client) { return client; }
  */
 
 public void giveCar(Client client) throws carException {
-	if(this.car == null) {
-		throw new carException(this.car);
+	if(this.cars == null) {
+		//throw new carException();
 	}
-	else { this.addAClient(client).rentACar(car); }
+	//else { this.addAClient(client).rentACar(car); }
 }
 
 }

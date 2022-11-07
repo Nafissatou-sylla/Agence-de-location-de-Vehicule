@@ -39,8 +39,8 @@ class Cylindre {
 +lancer()
 }
 
-Agence  -- "1..1 leClient" Client
-Agence o-- "0..1  laVoiture " Voiture
+Agence  -- "0..n lesClients" Client
+Agence o-- "0..n  lesVoitures " Voiture
 Voiture o-- "1..1 leMoteur" Moteur
 Moteur *-- "1..n lesCylindres" Cylindre
 Client -- " laVoiture 0..1" Voiture
