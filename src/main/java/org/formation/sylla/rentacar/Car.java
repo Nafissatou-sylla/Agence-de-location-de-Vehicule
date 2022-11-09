@@ -7,6 +7,7 @@ package org.formation.sylla.rentacar;
 
 public class Car {
 	private Motor motor;
+	private String mark;
 
 /**
  * construct a motor
@@ -20,8 +21,9 @@ public class Car {
 	 * 
 	 * @param motor the car's motor
 	 */
-	public Car(Motor motor) {
+	public Car(String mark, Motor motor) {
 		this.motor = motor;
+		this.mark = mark;
 	}
 	
 	
@@ -39,4 +41,12 @@ public class Car {
 	public void launchMotor() {
 		motor.displayCylinders();
 	}
+
+
+	@Override
+	public String toString() {
+		return "Car [mark=" + mark + "]";
+	}
+	
+	
 }
