@@ -27,21 +27,42 @@ public class Car {
 	}
 	
 	
+	
+	public Motor getMotor() {
+		return motor;
+	}
+
+
+	public void setMotor(Motor motor) {
+		this.motor = motor;
+	}
+
+
+	public String getMark() {
+		return mark;
+	}
+
+
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
+
+
 	/**
 	 * client can open the car's cowl
 	 * @return the car's motor
+	 * @throws OilLevelException 
 	 */
-	public Motor openCowl() {
+	public Motor openCowl(){
 		return motor;
 	}
-	
-	/**
-	 * the client launch the motor
-	 */
-	public void launchMotor() {
-		motor.displayCylinders();
-	}
 
+	
+	public void startACar()throws OilLevelException {
+		if(this.motor.getOilLevel() <5 || this.motor.getOilLevel() >15 ) {
+			throw new OilLevelException();
+		}
+	}
 
 	@Override
 	public String toString() {

@@ -8,14 +8,17 @@ import java.util.ArrayList;
  */
 
 public class Cylinder {
-	int numDeCylindre;
+	private int numDeCylindre;
+	private String state;
+	
 	
 	
 	/**
 	 * construct cylinders
 	 */
-	public Cylinder(int numCylindre) {
-		this.numDeCylindre = numCylindre;
+	public Cylinder(int numCylindre, String state) {
+		this.setNumCylindre ( numCylindre);
+		this.setState(state);
 	}
 
 
@@ -27,6 +30,23 @@ public class Cylinder {
 	public void setNumCylindre(int numCylindre) {
 		this.numDeCylindre = numCylindre;
 	}
+
+
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Cylinder [numDeCylindre=" + numDeCylindre + "]";
+	}
+	
 	
 	
 }

@@ -1,6 +1,7 @@
 package org.formation.sylla.rentacar;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Class client
@@ -62,35 +63,56 @@ public class Client implements Serializable{
 	
 	/**
 	 * 
-	 * @param car the car for rent
+	 * @param car the car that the client wants to rent
+	 * @throws CarAlreadyRentedException exception if the car is already rented
+	 * @throws CarNotInTheAgencyException exception if the car is not in the agency
+	 * @throws ClientAlreadyRentedACarException exception if the client has already rented a car
 	 */
-	public void rentACar(Car car) {
-		this.car = car;
+	public void rentACar(Car car, ArrayList<Agency> agencies) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
+		for (Agency agency : agencies) {
+			agency.giveCar(this, car);
+			this.car = agency.getRentedCars().get(this) ;
+		}
+	}
+	
+	
+	/**
+	 * the client launch the motor
+	 */
+	public void launchMotor() {
+		this.car.getMotor().displayCylinders();
 	}
 	
 	
 	/**
 	 * the client starts the car
-	 * @throws driveException 
+	 * @throws DriveException 
 	 */
-	public void driveCar(Car car) throws driveException {
-		if(car == null) {
-			throw new driveException(car);
+	public void driveCar() throws DriveException {
+		if(this.car == null) {
+			throw new DriveException(car);
 		}
 		else {
-			car.launchMotor();
+			try {
+				this.car.startACar();
+			} 
+			catch (OilLevelException e) {
+				e.printStackTrace();
+			}
+			launchMotor();
 		}
 	}
 	
 	
 	/**
-	 * le client retourne la voiture
-	 * @param car la voiture retournée
-	 * @return retourne la voiture
+	 * the client returns the car 
+	 * @return return the car
 	 */
-	public Car returnCar(Car car) {
-		Car theCar = car;
-		return theCar = null;
+	public Car returnCar() {
+		Car tmp = null;
+		tmp = this.car;
+		this.car = null;
+		return tmp;
 	}
 }
 
