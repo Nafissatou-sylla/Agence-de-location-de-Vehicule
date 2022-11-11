@@ -80,7 +80,7 @@ public class Client implements Serializable{
 	 * the client launch the motor
 	 */
 	public void launchMotor() {
-		this.car.getMotor().displayCylinders();
+		this.car.getMotor().toString();
 	}
 	
 	
@@ -114,5 +114,14 @@ public class Client implements Serializable{
 		this.car = null;
 		return tmp;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Client " + lastName + " " + firstName  + " " + bornYear + " ans, car: " + car;
+	}
+	
+	
+	
 }
 

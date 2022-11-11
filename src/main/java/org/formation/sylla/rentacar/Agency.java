@@ -20,7 +20,7 @@ public class Agency {
 	/**
 	 * 
 	 * @param name the agency's name 
-	 * @param address agency's adress
+	 * @param address agency's address
 	 */
 
 	public Agency(String name, String address) {
@@ -58,6 +58,10 @@ public class Agency {
 	public ArrayList<Car> getListCars() {
 		return listCars;
 	}
+	
+	public void setListCars(ArrayList<Car> listCars) {
+		this.listCars = listCars;
+	}
 
 	public ArrayList<Client> getListClients() {
 		return listClients;
@@ -79,6 +83,23 @@ public class Agency {
 		}
 		else {
 			listClients.add(client);
+			return true;
+		}
+	
+	}
+	
+	
+	/**
+	 * the Agency receive a new Car
+	 * @param car the new car of agency
+	 * @return true if we add the car in the agency's car list
+	 */
+	public boolean addCar(Car car) {
+		if(listCars.contains(car)) {
+			return false;
+		}
+		else {
+			listCars.add(car);
 			return true;
 		}
 	
@@ -114,7 +135,10 @@ public class Agency {
 	 */
 
 	public void giveCar(Client client, Car car) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
-		if( ! listCars.contains(car)) {
+		if( ! listClients.contains(client)) {
+			listClients.add(client);
+		}
+		else if( ! listCars.contains(car)) {
 			throw new CarNotInTheAgencyException();
 		}
 		else if( carHasAlreadyRented(car)){
@@ -141,5 +165,15 @@ public class Agency {
 			}
 		}
 	}
+
+
+	@Override
+	public String toString() {
+		return "Agency " + name + ", address: " + address + ", listClients: " + listClients + ", listCars: "
+				+ listCars + ", rentedCars: " + rentedCars ;
+	}
+	
+	
+	
 }
 

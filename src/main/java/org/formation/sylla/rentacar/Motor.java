@@ -22,7 +22,7 @@ public class Motor {
 	 * construct the motor's cylinders
 	 */
 	public Motor(double oilLevel) {
-		this.cylinders = new ArrayList();
+		this.cylinders = new ArrayList<>();
 		setOilLevel(oilLevel);
 		
 	}
@@ -40,16 +40,11 @@ public class Motor {
 	 *  display each cylinder number when the client launch the car 
 	 */
 	public String displayCylinders() {
-		for( int i = 0 ; i <=  this.cylinders.size() ;i++) {
-			//display = "cylindre numéro : " + i + " démarrer";
+		String display = " ";
+		for (Cylinder cylinder : cylinders) {
+			display = cylinder.toString();
 		}
-		return "";
-	}
-
-
-	@Override
-	public String toString() {
-		return "Motor [cylinders=" + cylinders + ", oilLevel=" + oilLevel + " litre ]";
+		return display;
 	}
 	
 	

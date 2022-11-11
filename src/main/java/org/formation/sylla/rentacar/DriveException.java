@@ -1,9 +1,9 @@
 package org.formation.sylla.rentacar;
 
-public class driveException extends Exception{
+public class DriveException extends Exception{
 	private Car car;
 
-	public driveException(Car car) {
+	public DriveException(Car car) {
 		this.car = car;
 	}
 	

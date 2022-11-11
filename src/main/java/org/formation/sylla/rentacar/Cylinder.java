@@ -1,7 +1,5 @@
 package org.formation.sylla.rentacar;
 
-import java.util.ArrayList;
-
 /**
  * 
  * @author finas
@@ -44,7 +42,7 @@ public class Cylinder {
 
 	@Override
 	public String toString() {
-		return "Cylinder [numDeCylindre=" + numDeCylindre + "]";
+		return "Cylinder [ cylindre numéro: " + numDeCylindre + " démaré ]";
 	}
 	
 	
