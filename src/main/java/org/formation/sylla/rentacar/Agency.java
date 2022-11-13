@@ -14,7 +14,7 @@ public class Agency {
 	private String address;
 	private ArrayList<Client> listClients;
 	private ArrayList<Car> listCars;
-	private Map<Client, Car> rentedCars;
+	private Map<Client , Car> rentedCars;
 
 
 	/**
@@ -67,6 +67,11 @@ public class Agency {
 		return listClients;
 	}
 
+	
+	/**
+	 * 
+	 * @return the list of each rented car and the client who rented it
+	 */
 	public Map<Client, Car> getRentedCars() {
 		return rentedCars;
 	}
@@ -148,7 +153,7 @@ public class Agency {
 			throw new ClientAlreadyRentedACarException();
 			}
 		else {
-			this.rentedCars.put(client, car);
+			this.rentedCars.put(client , car);
 		}
 	}
 	
@@ -169,8 +174,8 @@ public class Agency {
 
 	@Override
 	public String toString() {
-		return "Agency " + name + ", address: " + address + ", listClients: " + listClients + ", listCars: "
-				+ listCars + ", rentedCars: " + rentedCars ;
+		return " Agency " + name + ", address: " + address + ",\n listClients: " + listClients + ",\n listCars: "
+				+ listCars + ",\n rentedCars: " + rentedCars;
 	}
 	
 	

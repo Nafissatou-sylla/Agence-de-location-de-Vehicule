@@ -18,12 +18,11 @@ public class Main {
 		
 		listCars.add(car1);
 		listCars.add(car1);
-
 		listCars.add(car2);
 		listCars.add(car3);
 
-		Agency agenceSylla = new Agency("Sylla Agence", "Marseille");
-		Agency agenceNafi = new Agency("Nafi Agence", "Marseille");
+		Agency agenceSylla = new Agency("SyllaAgence", "Marseille");
+		Agency agenceNafi = new Agency("NafiAgence", "Marseille");
 		
 		for (Car car : listCars) {
 			agenceSylla.addCar(car);
@@ -45,14 +44,15 @@ public class Main {
 		e2.printStackTrace();
 	}
 	   
-//	   try {
-//		agenceSylla.giveCar(clientBob, car3);
-//	} catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e1) {
-//		e1.printStackTrace();
-//	}
+	   try {
+		agenceSylla.giveCar(clientBob, car3);
+	} catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e1) {
+		e1.printStackTrace();
+	}
 	   
 	 
 	   System.out.println(agenceSylla.toString());
+	   System.out.println(clientBob.toString());
 		
 		Path path = Paths.get("clientFile");
 		try(OutputStream out = Files.newOutputStream(path)){

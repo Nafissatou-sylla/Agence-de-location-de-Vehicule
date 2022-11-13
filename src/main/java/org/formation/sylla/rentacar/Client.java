@@ -118,7 +118,7 @@ public class Client implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Client " + lastName + " " + firstName  + " " + bornYear + " ans, car: " + car;
+		return "Client " + firstName.toUpperCase() + " " + lastName  + " " + bornYear + " ans, car: " + this.car;
 	}
 	
 	
