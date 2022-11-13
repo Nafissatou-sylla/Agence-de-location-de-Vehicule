@@ -1,6 +1,7 @@
 package org.formation.sylla.rentacar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 
@@ -12,9 +13,9 @@ public class Motor {
 	private ArrayList<Cylinder> cylinders;
 	private double oilLevel;
 	
-	
+
+
 	public Motor() {
-		this.setOilLevel(12);
 	}
 	
 
@@ -22,7 +23,12 @@ public class Motor {
 	 * construct the motor's cylinders
 	 */
 	public Motor(double oilLevel) {
-		this.cylinders = new ArrayList<>();
+		this.cylinders = new ArrayList<>() ;
+		
+		for (int i = 0; i < 20; i++) {
+			this.cylinders.add(new Cylinder( i + 1, "bon état"));
+		}
+		
 		setOilLevel(oilLevel);
 		
 	}
@@ -35,17 +41,21 @@ public class Motor {
 	public void setOilLevel(double oilLevel) {
 		this.oilLevel = oilLevel;
 	}
+
 	
-	/**
-	 *  display each cylinder number when the client launch the car 
-	 */
-	public String displayCylinders() {
+	public String displayCylinder(){
 		String display = " ";
 		for (Cylinder cylinder : cylinders) {
-			display = cylinder.toString();
+			display = this.toString();
 		}
 		return display;
 	}
+
+
+	@Override
+	public String toString() {
+		return " cylinders: " + cylinders;
+	}	
 	
 	
 }

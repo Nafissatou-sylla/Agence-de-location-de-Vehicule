@@ -16,7 +16,7 @@ public class Client implements Serializable{
 	private int bornYear;
 	private Car car;
 	
-	
+
 	/**
 	 * 
 	 * @param lastName client's lastName
@@ -75,12 +75,17 @@ public class Client implements Serializable{
 		}
 	}
 	
+	public Car getCar() {
+		return car;
+	}
+
+	
 	
 	/**
 	 * the client launch the motor
 	 */
 	public void launchMotor() {
-		this.car.getMotor().toString();
+		System.out.println(this.car.getMotor().displayCylinder());
 	}
 	
 	
@@ -90,7 +95,7 @@ public class Client implements Serializable{
 	 */
 	public void driveCar() throws DriveException {
 		if(this.car == null) {
-			throw new DriveException(car);
+			throw new DriveException();
 		}
 		else {
 			try {
@@ -103,22 +108,23 @@ public class Client implements Serializable{
 		}
 	}
 	
-	
+
+
 	/**
 	 * the client returns the car 
 	 * @return return the car
 	 */
-	public Car returnCar() {
-		Car tmp = null;
-		tmp = this.car;
+	public Car returnCar(Car car) {
+		car = null;
+		car = this.car;
 		this.car = null;
-		return tmp;
+		return car;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Client " + firstName.toUpperCase() + " " + lastName  + " " + bornYear + " ans, car: " + this.car;
+		return " Client " + firstName.toUpperCase() + " " + lastName  + " " + bornYear + " ans, " + this.car ;
 	}
 	
 	

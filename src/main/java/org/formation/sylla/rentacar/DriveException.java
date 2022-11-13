@@ -1,18 +1,12 @@
 package org.formation.sylla.rentacar;
 
 public class DriveException extends Exception{
-	private Car car;
 
-	public DriveException(Car car) {
-		this.car = car;
+	public DriveException() {
+		this("vous ne pouvez pas conduire sans voiture");
 	}
 	
-	
-	/**
-	 * Returns the detail message string of this throwable.
-	 */
-	@Override
-	public String getMessage() {
-		return car.toString() + " démarrage impossible,vous n'avez pas de voiture";
+	public DriveException(String message) {
+		super(message);
 	}
 }

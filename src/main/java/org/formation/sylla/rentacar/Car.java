@@ -66,7 +66,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "car mark : " + mark ;
+		return " car mark : " + mark ;
 	}
 	
 	

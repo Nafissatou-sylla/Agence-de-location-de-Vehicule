@@ -42,7 +42,7 @@ public class Cylinder {
 
 	@Override
 	public String toString() {
-		return "Cylinder [ cylindre numéro: " + numDeCylindre + " démaré ]";
+		return " cylindre numéro " + numDeCylindre + " démaré \n";
 	}
 	
 	

@@ -162,13 +162,10 @@ public class Agency {
 	 * checked if the client has returned the car 
 	 * @param car 
 	 */
-	public void clientReturnedTheCar(Car car) {
-		for (Client client : listClients) {
-			car = rentedCars.get(client);
-			if(client.returnCar() == car) {
-				rentedCars.remove(client);
-			}
-		}
+	public void clientReturnedTheCar(Client client, Car car) {
+		this.rentedCars.remove(client);
+		this.listClients.remove(client);
+		this.listCars.add(car);
 	}
 
 
