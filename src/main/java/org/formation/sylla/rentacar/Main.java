@@ -110,13 +110,28 @@ public class Main {
 	   
 	   
 		/**
-		 * Serializable
+		 * Serializable Client
 		 */
-		Path path = Paths.get("clientFile");
-		try(OutputStream out = Files.newOutputStream(path)){
+		Path pathClient = Paths.get("clientFile");
+		try(OutputStream out = Files.newOutputStream(pathClient)){
 			ObjectOutputStream oos = new ObjectOutputStream(out);
-			Client client = new Client("SYLLA", "Nafi",19);
+			Client client = new Client(" SYLLA ", " Nafi ",19);
 			oos.writeObject(client);
+		}
+		
+		catch(IOException e) {
+			System.err.println(e);
+		}
+		
+		
+		/**
+		 * Serializable Agency
+		 */
+		Path pathAgency = Paths.get("AgencyFile");
+		try(OutputStream out = Files.newOutputStream(pathAgency)){
+			ObjectOutputStream oos = new ObjectOutputStream(out);
+			Agency agency = new Agency(" AgenceSylla ", " Marseille ");
+			oos.writeObject(agency);
 		}
 		
 		catch(IOException e) {

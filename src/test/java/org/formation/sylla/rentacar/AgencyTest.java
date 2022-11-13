@@ -2,6 +2,10 @@ package org.formation.sylla.rentacar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -12,12 +16,18 @@ class AgencyTest {
 	private Agency agency;
 	private Client client;
 	private Car car;
+	private ArrayList<Client> listClients;
+	private Map<Client, Car> listRentedCars;
+	private ArrayList<Car> listCars;
 	
 	@BeforeEach
 	void createAgence() {
 		agency = new Agency("Agence de voiture", "Marseille");
-		car = new Car();
 		client = new Client("SYLLA", "Nafissatou", 2000);
+		car = new Car();
+		listClients = new ArrayList<>();
+		listRentedCars = new HashMap<>();
+		listCars = new ArrayList<>();
 	}
 	
 	
@@ -31,19 +41,37 @@ class AgencyTest {
 		assertEquals(agency.getAddress(), "Marseille");
 	}
 	
-	@Test
-	void testCreateCar() {
-		agency = new Agency(car);
-		assertEquals(agency.createCar(), car);
-	}
+	
 	
 	@Test
 	void testAddAClient() {
-		assertEquals(agency.addAClient(client), client);
+		assertEquals(listClients.add(client), agency.addAClient(client));
 	}
 	
 	@Test
-	void testGiveACar() {
-		
+	void testAddCar() {
+		assertEquals(listCars.add(car), agency.addCar(car));
+	}
+	
+	
+	@Test
+	void testClientHasAlreadyRentedACar() {
+		assertFalse(listRentedCars.containsKey(client));
+	}
+	
+	@Test
+	void CarHasAlreadyRente() {
+		assertFalse(listRentedCars.containsValue(car));
+	}
+	
+	@Test
+	void testGiveACar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
+		agency.giveCar(client, car);
+	}
+	
+	
+	@Test
+	void testClientReturnedTheCar() {
+		agency.clientReturnedTheCar(client, car);
 	}
 }

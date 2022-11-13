@@ -1,5 +1,6 @@
 package org.formation.sylla.rentacar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,8 @@ import java.util.Map;
  * class agency to rent a car 
  */
 
-public class Agency {
+public class Agency implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String address;
 	private ArrayList<Client> listClients;
@@ -107,7 +109,6 @@ public class Agency {
 			listCars.add(car);
 			return true;
 		}
-	
 	}
 
 
