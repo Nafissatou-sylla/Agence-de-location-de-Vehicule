@@ -1,7 +1,6 @@
 package org.formation.sylla.rentacar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * 
@@ -14,9 +13,7 @@ public class Motor {
 	private double oilLevel;
 	
 
-
-	public Motor() {
-	}
+	public Motor() {}
 	
 
 	/**
@@ -45,9 +42,7 @@ public class Motor {
 	
 	public String displayCylinder(){
 		String display = " ";
-		for (Cylinder cylinder : cylinders) {
-			display = this.toString();
-		}
+		display = this.toString();
 		return display;
 	}
 

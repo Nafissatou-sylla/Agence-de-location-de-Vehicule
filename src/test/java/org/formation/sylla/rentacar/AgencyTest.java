@@ -1,20 +1,25 @@
 package org.formation.sylla.rentacar;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 
 import org.junit.jupiter.api.BeforeEach;
 class AgencyTest {
-	private Agency agency;
+	private Agency<Car> agency;
 	private Client client;
 	private Car car;
+	private ArrayList<Car> cars;
 	
 	@BeforeEach
 	void createAgence() {
-		agency = new Agency("Agence de voiture", "Marseille");
+		agency = new Agency<>("Agence de voiture", "Marseille");
 		client = new Client("SYLLA", "Nafissatou", 2000);
 		car = new Car();
+		cars = new ArrayList<>();
 	}
 	
 	
@@ -57,6 +62,7 @@ class AgencyTest {
 	
 	@Test
 	void testGiveACar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
+		cars.add(car);
 		agency.giveCar(client, car);
 	}
 	

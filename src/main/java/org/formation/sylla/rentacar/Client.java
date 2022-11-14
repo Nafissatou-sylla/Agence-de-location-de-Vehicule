@@ -81,12 +81,11 @@ public class Client implements Serializable{
 	 * @throws CarNotInTheAgencyException exception if the car is not in the agency
 	 * @throws ClientAlreadyRentedACarException exception if the client has already rented a car
 	 */
-	public void rentACar(Car car, ArrayList<Agency> agencies) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
-		for (Agency agency : agencies) {
+	public void rentACar(Car car, Agency<Car> agency) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
 			agency.giveCar(this, car);
 			this.car = agency.getRentedCars().get(this) ;
-		}
 	}
+	
 	
 	public Car getCar() {
 		return car;

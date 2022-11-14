@@ -25,8 +25,8 @@ public class Main {
 		listCars.add(car2);
 		listCars.add(car3);
 
-		Agency agenceSylla = new Agency("SyllaAgence", "Marseille");
-		Agency agenceNafi = new Agency("NafiAgence", "Marseille");
+		Agency<Car> agenceSylla = new Agency<>("SyllaAgence", "Marseille");
+		Agency<Car> agenceNafi = new Agency<>("NafiAgence", "Marseille");
 		
 		
 		/**
@@ -48,24 +48,16 @@ public class Main {
 	   /**
 		 * the list of agency
 		 */
-		ArrayList<Agency> listAgencies = new ArrayList<>();
+		ArrayList<Agency<Car>> listAgencies = new ArrayList<>();
 		listAgencies.add(agenceNafi);
 		listAgencies.add(agenceSylla);
 		
 	/**
 	* test the method giveCar in Agency and rentACar in Client
 	*/
-		   
+		
 	try {
-		agenceSylla.giveCar(clientBob, car3);
-		} 
-	catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e1) {
-		e1.printStackTrace();
-		}
-		   
-	  
-	try {
-		clientBob.rentACar(car3, listAgencies);
+		clientBob.rentACar(car3, agenceSylla);
 		} 
 	catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e2) {
 		e2.printStackTrace();
@@ -128,7 +120,7 @@ public class Main {
 		Path pathAgency = Paths.get("AgencyFile");
 		try(OutputStream out = Files.newOutputStream(pathAgency)){
 			ObjectOutputStream oos = new ObjectOutputStream(out);
-			Agency agency = new Agency(" AgenceSylla ", " Marseille ");
+			Agency<Car> agency = new Agency<>(" AgenceSylla ", " Marseille ");
 			oos.writeObject(agency);
 		}
 		

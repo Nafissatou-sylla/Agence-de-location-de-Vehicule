@@ -10,7 +10,7 @@ import java.util.Map;
  * class agency to rent a car 
  */
 
-public class Agency implements Serializable{
+public class Agency<Car> implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String address;
@@ -143,20 +143,17 @@ public class Agency implements Serializable{
 	public void giveCar(Client client, Car car) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
 		if( ! listClients.contains(client)) {
 			listClients.add(client);
-			client.rentACar(car, client.getAgencies());
-		}
-		else if( ! listCars.contains(car)) {
+			}
+		if( ! listCars.contains(car)) {
 			throw new CarNotInTheAgencyException();
 		}
-		else if( carHasAlreadyRented(car)){
+		if( carHasAlreadyRented(car)){
 			throw new CarAlreadyRentedException();
 			}
-		else if(clientHasAlreadyRentedACar(client)) {
+		if(clientHasAlreadyRentedACar(client)) {
 			throw new ClientAlreadyRentedACarException();
-			}
-		else {
-			this.rentedCars.put(client , car);
 		}
+		this.rentedCars.put(client , car);
 	}
 	
 	
