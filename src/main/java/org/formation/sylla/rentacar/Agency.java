@@ -143,6 +143,7 @@ public class Agency implements Serializable{
 	public void giveCar(Client client, Car car) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
 		if( ! listClients.contains(client)) {
 			listClients.add(client);
+			client.rentACar(car, client.getAgencies());
 		}
 		else if( ! listCars.contains(car)) {
 			throw new CarNotInTheAgencyException();

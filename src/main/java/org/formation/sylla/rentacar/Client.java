@@ -15,6 +15,7 @@ public class Client implements Serializable{
 	private String firstName;
 	private int bornYear;
 	private Car car;
+	private ArrayList<Agency> agencies;
 	
 
 	/**
@@ -28,6 +29,7 @@ public class Client implements Serializable{
 		this.firstName = firstName;
 		this.bornYear = bornYear;
 		this.car = null;
+		this.agencies = new ArrayList<>();
 	}
 
 	
@@ -61,6 +63,17 @@ public class Client implements Serializable{
 	}
 	
 	
+	
+	public ArrayList<Agency> getAgencies() {
+		return agencies;
+	}
+
+
+	public void setAgencies(ArrayList<Agency> agencies) {
+		this.agencies = agencies;
+	}
+
+
 	/**
 	 * 
 	 * @param car the car that the client wants to rent

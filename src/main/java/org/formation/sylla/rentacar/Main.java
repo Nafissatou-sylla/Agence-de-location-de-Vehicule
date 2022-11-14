@@ -35,14 +35,6 @@ public class Main {
 		for (Car car : listCars) {
 			agenceSylla.addCar(car);
 		}
-
-		
-		/**
-		 * the list of agency
-		 */
-		ArrayList<Agency> listAgencies = new ArrayList<>();
-		listAgencies.add(agenceNafi);
-		listAgencies.add(agenceSylla);
 		
 
 		/**
@@ -54,26 +46,32 @@ public class Main {
 	   
 	   
 	   /**
-	    * test the method giveCar in Agency and rentACar in Client
-	    */
-	   
-	   try {
-			agenceSylla.giveCar(clientBob, car3);
+		 * the list of agency
+		 */
+		ArrayList<Agency> listAgencies = new ArrayList<>();
+		listAgencies.add(agenceNafi);
+		listAgencies.add(agenceSylla);
+		
+	/**
+	* test the method giveCar in Agency and rentACar in Client
+	*/
+		   
+	try {
+		agenceSylla.giveCar(clientBob, car3);
 		} 
-	   catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e1) {
-			e1.printStackTrace();
+	catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e1) {
+		e1.printStackTrace();
 		}
-	   
-	   
-	   
-	   try {
+		   
+	  
+	try {
 		clientBob.rentACar(car3, listAgencies);
 		} 
-	   catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e2) {
-			e2.printStackTrace();
+	catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException e2) {
+		e2.printStackTrace();
 		}
 	   
-	 
+	  
 	   System.out.println(agenceSylla.toString());
 	   System.out.println(clientBob.toString() + "\n");
 	   

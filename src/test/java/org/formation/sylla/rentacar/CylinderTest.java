@@ -10,7 +10,7 @@ class CylinderTest {
 	
 	@BeforeEach
 	void initialisingCylinder() {
-		cylinder = new Cylinder(12);
+		cylinder = new Cylinder(12, "normal");
 	}
 	
 	@Test

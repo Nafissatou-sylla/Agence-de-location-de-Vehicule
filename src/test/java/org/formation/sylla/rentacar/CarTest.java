@@ -8,17 +8,20 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 	private Car car;
-	Motor motor;
+	private Motor motor;
+	private String mark;
 	
 	@BeforeEach
 	void initialisingCar() {
 		car = new Car();
 		motor = new Motor();
+		mark = "BMW";
+		
 	}
 
 	@Test
 	void testOpenCowl() {
-		car = new Car(motor);
+		car = new Car( mark, motor);
 		assertEquals(car.openCowl(), motor);
 	}
 
