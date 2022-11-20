@@ -1,43 +1,44 @@
 @startuml
 
-class Agence {
--nom: String  
--address: String 
+class Agence <<Serialisable>>{
+-nom: String
+-address: String
+-lesVoituresLouées: Map<Client, Voiture> 
 
-+creerVoiture()
 +entrerUnClient(client: Client)
-+donnerLaVoiture(Client client) 
++donnerLaVoiture(client: Client, voiture: Voiture) 
 }
 
-class Client{
+
+class Client <<Serialisable>>{
 -nom:String 
 -prenom: String
 -annéeDeNaissance: int
 
-+louerUneVoiture(voiture: Voiture)
++louerUneVoiture(voiture: Voiture, agence: Agence)
++louerUneVoitureAvecMarqueSpécifique(voiture: Voiture, agence: Agence, mark: String )
+
 +demarrerVoiture()
-+rendreVoiture(Voiture voiture): Voiture
++rendreVoiture(voiture :Voiture): Voiture
 }
 
 class Voiture{
 - marque: String
-+demarrerLeMoteur() 
+-motor: Motor
++demarrerLaVoiture() 
 +ouvrirCapot(): Moteur
 }
 
 class Moteur {
-- niveau d'huile
-
-+lancer()
-/* +affichageNumCylindre: String */
+- niveau d'huile: double
+ +affichageCylindre(): String 
 }
 
 class Cylindre {
 -numCylindre: int
 -etat: String
-
-+lancer()
 }
+
 
 Agence  -- "0..n lesClients" Client
 Agence o-- "0..n  lesVoitures " Voiture
