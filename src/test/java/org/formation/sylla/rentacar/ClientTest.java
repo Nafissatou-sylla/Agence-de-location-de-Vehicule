@@ -17,7 +17,8 @@ class ClientTest {
 	void initialisingClient() {
 		client = new Client("SYLLA", "Nafissatou", 2000);
 		agency = new Agency<>("Agence", "Marseille");
-		car = null;
+		car =new Car("BMW", new Motor());
+		agency.addCar(car);
 	}
 	
 	@Test
@@ -37,9 +38,14 @@ class ClientTest {
 	
 	@Test
 	void testRentACar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
-		//client.rentACar(car, agency);
-		assertThrows(CarNotInTheAgencyException.class, ()-> {client.rentACar(car, agency);});
-		//assertThrows(CarNotInTheAgencyException.class,()->{agency.giveCar(client, car);});
+		client.rentACar(car, agency);
+	}
+	
+	@Test
+	void testRentACarWithSpecificMark() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException, MarkException {
+		assertDoesNotThrow(()->{client.rentACarWithSpecificMark(car, agency, "BMW");});
+		assertThrows(MarkException.class,()->{client.rentACarWithSpecificMark(car, agency, "Mercedes");});
+
 	}
 	
 	@Test
@@ -48,4 +54,8 @@ class ClientTest {
 		assertEquals(client.returnCar(car), null);
 	}
 
+	
+	@Test
+	void testDriveCar() throws DriveException {
+		assertThrows(DriveException.class,()->{client.driveCar();});	}
 }

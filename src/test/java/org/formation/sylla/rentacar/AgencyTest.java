@@ -80,4 +80,5 @@ class AgencyTest {
 	void testClientReturnedTheCar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
 		agency.clientReturnedTheCar(client, car);
 	}
+	
 }

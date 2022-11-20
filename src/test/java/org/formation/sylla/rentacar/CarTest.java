@@ -25,5 +25,10 @@ class CarTest {
 		assertEquals(car.openCowl(), motor);
 	}
 
+	
+	@Test
+	void testStartCar() throws OilLevelException {
+		assertThrows(OilLevelException.class,()->{car.startACar();});
+	}
 }
 
