@@ -1,8 +1,12 @@
 package org.formation.sylla.rentacar;
 
-public class Camion {
+public class Camion extends Vehicle{
 	
-	public Camion() {
-		
+	public Camion() {}
+	
+	public Camion(String mark, Motor motor) {
+		super( mark, motor);
 	}
+	
+	
 }

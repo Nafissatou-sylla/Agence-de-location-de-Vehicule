@@ -1,35 +1,38 @@
 package org.formation.sylla.rentacar;
 
 public abstract class Vehicle {
-
-	private String name;
-	private String address;
+	private Motor motor;
+	private String mark;
 	
 	public Vehicle() {
-		
-	}
-
-	public Vehicle(String name, String address) {
-		this.name = name;
-		this.address = address;
-	}
-
-	protected String getName() {
-		return name;
-	}
-
-	protected void setName(String name) {
-		this.name = name;
-	}
-
-	protected String getAddress() {
-		return address;
-	}
-
-	protected void setAddress(String address) {
-		this.address = address;
+		this.motor = new Motor();
 	}
 	
+	
+	public Vehicle(String mark,Motor motor) {
+		super();
+		this.motor = motor;
+		this.mark = mark;
+	}
+
+	
+	protected Motor getMotor() {
+		return motor;
+	}
+
+	protected void setMotor(Motor motor) {
+		this.motor = motor;
+	}
+
+	protected String getMark() {
+		return mark;
+	}
+
+	protected void setMark(String mark) {
+		this.mark = mark;
+	}
+
+
 	
 	
 }
