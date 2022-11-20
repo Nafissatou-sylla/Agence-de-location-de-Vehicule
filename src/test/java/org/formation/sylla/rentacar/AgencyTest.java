@@ -1,5 +1,6 @@
 package org.formation.sylla.rentacar;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -20,20 +21,28 @@ class AgencyTest {
 		client = new Client("SYLLA", "Nafissatou", 2000);
 		car = new Car();
 		cars = new ArrayList<>();
+		cars.add(car);
+		agency.addCar(car);
 	}
+	
+	
 	
 	
 	@Test
 	void testGetName() {
-		assertEquals(agency.getName(), "Agence de voiture");
+		assertThat(agency.getName()).isEqualTo("Agence de voiture");
+
 	}
 	
 	@Test
 	void testGetAddress() {
-		assertEquals(agency.getAddress(), "Marseille");
+		assertThat(agency.getAddress()).isEqualTo("Marseille");
 	}
 	
-	
+	@Test
+	void testGetListCars(){
+		assertThat(agency.getListCars()).isEqualTo(cars);
+	}
 	
 	@Test
 	void testAddAClient() {
@@ -44,7 +53,6 @@ class AgencyTest {
 	
 	@Test
 	void testAddCar() {
-		assertTrue(agency.addCar(car));
 		assertFalse(agency.addCar(car));
 	}
 	
@@ -56,14 +64,15 @@ class AgencyTest {
 	}
 	
 	@Test
-	void CarHasAlreadyRente() {
+	void CarHasAlreadyRented() {
 		assertFalse(agency.carHasAlreadyRented(car));
 	}
 	
+	
 	@Test
-	void testGiveACar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException {
-		cars.add(car);
+	void testGiveACar() throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException  {
 		agency.giveCar(client, car);
+		assertThrows(CarAlreadyRentedException.class,()->{agency.giveCar(client, car);});
 	}
 	
 	

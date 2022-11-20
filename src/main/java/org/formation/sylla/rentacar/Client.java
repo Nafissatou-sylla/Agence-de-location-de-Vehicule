@@ -15,7 +15,7 @@ public class Client implements Serializable{
 	private String firstName;
 	private int bornYear;
 	private Car car;
-	private ArrayList<Agency> agencies;
+	private ArrayList<Agency<Car>> agencies;
 	
 
 	/**
@@ -64,12 +64,12 @@ public class Client implements Serializable{
 	
 	
 	
-	public ArrayList<Agency> getAgencies() {
+	public ArrayList<Agency<Car>> getAgencies() {
 		return agencies;
 	}
 
 
-	public void setAgencies(ArrayList<Agency> agencies) {
+	public void setAgencies(ArrayList<Agency<Car>> agencies) {
 		this.agencies = agencies;
 	}
 
@@ -86,6 +86,16 @@ public class Client implements Serializable{
 			this.car = agency.getRentedCars().get(this) ;
 	}
 	
+	public void rentACarWithSpecificMark(Car car, Agency<Car> agency, String mark) throws CarAlreadyRentedException, CarNotInTheAgencyException, ClientAlreadyRentedACarException, MarkException {
+		if(car.getMark() == mark) {
+			agency.giveCar(this, car);
+			this.car = agency.getRentedCars().get(this) ;
+		}
+		else {
+			throw new MarkException();
+		}
+		
+	}
 	
 	public Car getCar() {
 		return car;

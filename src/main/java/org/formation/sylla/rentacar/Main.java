@@ -96,8 +96,15 @@ public class Main {
 //		e1.printStackTrace();
 //	}
 	 
-	 
+	 try {
+		clientAli.rentACarWithSpecificMark(car1, agenceSylla, "BMW");
+	} catch (CarAlreadyRentedException | CarNotInTheAgencyException | ClientAlreadyRentedACarException
+			| MarkException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
 	   
+	 System.out.println(agenceSylla.toString());
 	   
 		/**
 		 * Serializable Client

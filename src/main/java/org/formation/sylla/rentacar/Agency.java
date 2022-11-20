@@ -10,10 +10,8 @@ import java.util.Map;
  * class agency to rent a car 
  */
 
-public class Agency<Car> implements Serializable{
+public class Agency<Car>  extends Vehicle implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private String address;
 	private ArrayList<Client> listClients;
 	private ArrayList<Car> listCars;
 	private Map<Client , Car> rentedCars;
@@ -26,8 +24,7 @@ public class Agency<Car> implements Serializable{
 	 */
 
 	public Agency(String name, String address) {
-		this.name = name;
-		this.address = address; 
+		super(name, address);
 		this.listClients = new ArrayList<>();
 		this.listCars = new ArrayList<>();
 		this.rentedCars = new HashMap<>();
@@ -38,23 +35,7 @@ public class Agency<Car> implements Serializable{
 	 * 
 	 * @param car agency's car
 	 */
-	public Agency(ArrayList<Car> cars) { this.listCars = cars; }
-
-
-	/**
-	 * 
-	 * @return agency's name
-	 */
-
-	public String getName() { return name; }
-
-
-	/**
-	 * 
-	 * @return agency's address
-	 */
-
-	public String getAddress() { return address; }
+	public Agency(ArrayList<Car> cars) { this.listCars.addAll(cars); }
 
 
 	public ArrayList<Car> getListCars() {
@@ -170,7 +151,7 @@ public class Agency<Car> implements Serializable{
 
 	@Override
 	public String toString() {
-		return " Agency " + name + ", address: " + address + ",\n listClients: " + listClients + ",\n listCars: "
+		return " Agency " + this.getName() + ", address: " + this.getAddress() + ",\n listClients: " + listClients + ",\n listCars: "
 				+ listCars + ",\n rentedCars: " + rentedCars;
 	}
 	
