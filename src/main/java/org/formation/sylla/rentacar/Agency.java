@@ -158,6 +158,7 @@ public class Agency<Car>  extends Vehicle implements Serializable{
 		if(clientHasAlreadyRentedACar(client)) {
 			throw new ClientAlreadyRentedACarException();
 		}
+		
 		this.rentedCars.put(client , car);
 	}
 	
